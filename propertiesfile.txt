@@ -1,4 +1,4 @@
-for pop
+#for pop
 
 server.port=8078
 spring.datasource.url=jdbc:mysql://localhost:3306/mydb?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
