@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stack-push
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: stack-push
+    spec:
+      containers:
+        - name: stack-push
+          image: 'himanshu007/stack-push:main'
+          
+          ports:
+          - containerPort: 8077
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stack-push
+  labels:
+    name: stack-push
+spec:
+  ports:
+    - port: 8077
+      targetPort: 8077
+      protocol: TCP
+  selector:
+    app: stack-push
+  type: LoadBalancer
