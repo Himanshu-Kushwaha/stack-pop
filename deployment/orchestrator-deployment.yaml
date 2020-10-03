@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stack-orchestrator
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: stack-orchestrator
+    spec:
+      containers:
+        - name: stack-orchestrator
+          image: 'himanshu007/orchestrator:main'
+          ports:
+          - containerPort: 8080
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stack-orchestrator
+  labels:
+    name: stack-orchestrator
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: stack-orchestrator
+  type: LoadBalancer
