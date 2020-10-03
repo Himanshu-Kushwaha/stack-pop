@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,12 +24,13 @@ public class PopStackElementController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/pop", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<ResponseData> pushElement() throws Exception {
-        logger.info("HottestRepoController:getHottestRepo():: RepoCount request for hottest repos {}");
-        return new ResponseEntity<ResponseData>(popElement.pop(), HttpStatus.OK);
+    @RequestMapping(value = "/{datasource}/pop", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody ResponseEntity<ResponseData> popElementMysql(@PathVariable String datasource) throws Exception {
+        logger.info("PopElement():: PopElement from datasource {}", datasource);
+        return new ResponseEntity<ResponseData>(popElement.pop(datasource), HttpStatus.OK);
 
     }
 
 }
+
 
