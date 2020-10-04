@@ -13,7 +13,7 @@ spec:
         - name: stack-pop
           image: 'himanshu007/stack-pop:main'
           ports:
-          - containerPort: 8080
+          - containerPort: 8078
           imagePullPolicy: Always
 ---
 apiVersion: v1
@@ -24,8 +24,8 @@ metadata:
     name: stack-pop
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8078
+      targetPort: 8078
       protocol: TCP
   selector:
     app: stack-pop
