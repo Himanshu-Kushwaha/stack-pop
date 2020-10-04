@@ -38,7 +38,6 @@ public class PopElement {
         logger.info("PopElement():: getNewState {}", datasource);
         if ("psql".equalsIgnoreCase(datasource)) {
             for (StackData data : stackElementRepositoryPsql.findAllByOrderByIdDesc()) {
-                System.out.println(data.getStackElements() + ": id is: " + data.getId());
                 responseData.setPopedElement(data.getStackElements());
                 stackElementRepositoryPsql.deleteById(data.getId());
                 break;
@@ -48,7 +47,6 @@ public class PopElement {
             }
         } else {
             for (StackData data : stackElementRepositoryMysql.findAllByOrderByIdDesc()) {
-                System.out.println(data.getStackElements() + ": id is: " + data.getId());
                 responseData.setPopedElement(data.getStackElements());
                 stackElementRepositoryMysql.deleteById(data.getId());
                 break;
