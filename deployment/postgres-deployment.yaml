@@ -46,7 +46,7 @@ spec:
               name: psql-data
           env:
             - name: POSTGRES_USER
-              value: 'root'
+              value: 'postgres'
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
